@@ -1,0 +1,42 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/elements/dom-if">
+<link rel="import" href="../polymer/lib/elements/dom-repeat">
+
+<dom-module id="ava-agenda">
+    <template>
+        <style>
+            :host {
+                display: block;
+                border: 3px dashed #ccc;
+                padding: 10px;
+                color: gray;
+            }
+        </style>
+        <h2>Prova [[agenda.test.name]]</h2>
+        <p>[[agenda.contents]]</p>
+        <template is="dom-repeat" items="agenda.contents">
+            <p>[[item.content]]</p>
+        </template>
+
+    </template>
+    <script>
+        class AvaAgenda extends Polymer.Element {
+            static get is() { return 'ava-agenda'; }
+            static get properties() {
+                return {
+                    agenda: {
+                        type: Object,
+                        value: {
+                            user:{idnumber:'GRA12345', name:'Gabriel Espindola'},
+                            test:{name: 'A3'},
+                            contents: [
+                                {content: "First content"}, {content: "Second Content"}
+                            ]
+                        }
+                    }
+                };
+            }
+        }
+        window.customElements.define(AvaAgenda.is, AvaAgenda);
+    </script>
+</dom-module>
